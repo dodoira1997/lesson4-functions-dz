@@ -7,31 +7,37 @@
 """
 
 
-def simple_separator():
-    """
+def simple_separator(stars='*'):
+    return(stars*10)
+    pass
+print('Вывод 1:',simple_separator())
+"""
     Функция создает красивый резделитель из 10-и звездочек (**********)
     :return: **********
     """
-    pass
 
 
 print(simple_separator() == '**********')  # True
 
 
-def long_separator(count):
+def long_separator(count, stars='*'):
+    return(count*stars)
     """
     Функция создает разделитель из звездочек число которых можно регулировать параметром count
     :param count: количество звездочек
     :return: строка разделитель, примеры использования ниже
     """
     pass
-
+print("Вывод 2")
+print(long_separator(4))  # True
+print(long_separator(7))  # True
 
 print(long_separator(3) == '***')  # True
 print(long_separator(4) == '****')  # True
 
 
 def separator(simbol, count):
+    return(simbol*count)
     """
     Функция создает разделитель из любых символов любого количества
     :param simbol: символ разделителя
@@ -39,14 +45,20 @@ def separator(simbol, count):
     :return: строка разделитель примеры использования ниже
     """
     pass
+print("Вывод 3")
+print(separator(simbol='+', count=3))
 
 
 print(separator('-', 10) == '----------')  # True
 print(separator('#', 5) == '#####')  # True
 
 
-def hello_world():
-    """
+def hello_world(dlen,stars='*', name='Hello World!', grids='#'):
+    print(f'{stars*dlen}', end='\n\n')
+    print(name, end='\n\n')
+    print(grids*dlen)
+
+"""
     Функция печатает Hello World в формате:
     **********
 
@@ -55,9 +67,8 @@ def hello_world():
     ##########
     :return: None
     """
-    pass
-
-
+pass
+print("Вывод 4")
 '''
 **********
 
@@ -65,10 +76,13 @@ Hello World!
 
 ##########
 '''
-hello_world()
+hello_world(10)
 
 
-def hello_who(who='World'):
+def hello_who(who='World!',stars='*',  grids='#'):
+    print(f'{stars*10}', end='\n\n')
+    print(f'hello {who}', end='\n\n')
+    print(grids*10)
     """
     Функция печатает приветствие в красивом формате
     **********
@@ -80,8 +94,8 @@ def hello_who(who='World'):
     :return: None
     """
     pass
-
-
+print("Вывод 5")
+hello_who()
 '''
 **********
 
@@ -109,6 +123,10 @@ hello_who('Kate')
 
 
 def pow_many(power, *args):
+    sum=0
+    for i in args:
+        sum+=i
+    return(sum**power)
     """
     Функция складывает любое количество цифр и возводит результат в степень power (примеры использования ниже)
     :param power: степень
@@ -117,7 +135,7 @@ def pow_many(power, *args):
     """
     pass
 
-
+print('Вывод 6')
 print(pow_many(1, 1, 2) == 3)  # True -> (1 + 2)**1 == 3
 print(pow_many(1, 2, 3) == 5)  # True -> (2 + 3)**1 == 5
 print(pow_many(2, 1, 1) == 4)  # True -> (1 + 1)**2 == 4
@@ -126,6 +144,9 @@ print(pow_many(2, 1, 2, 3, 4) == 100)  # True -> (1 + 2 + 3 + 4)**2 == 10**2 == 
 
 
 def print_key_val(**kwargs):
+    for k, v in kwargs.items():
+        print(k,v)
+
     """
     Функция выводит переданные параметры в фиде key --> value
     key - имя параметра
@@ -134,7 +155,8 @@ def print_key_val(**kwargs):
     :return: None
     """
     pass
-
+print('Вывод 7')
+print(print_key_val(name='irina', age=26))
 
 """
 name --> Max
@@ -148,20 +170,27 @@ is_animal --> True
 print_key_val(animal='Cat', is_animal=True)
 
 
+
 def my_filter(iterable, function):
-    """
+    result=[]
+    for i in iterable:
+        if function(i):
+            result.append(i)
+    return result
+
+"""
     (Усложненое задание со *)
     Функция фильтрует последовательность iterable и возвращает новую
     Если function от элемента последовательности возвращает True, то элемент входит в новую последовательность иначе нет
     (примеры ниже)
-    :param iterable: входаня последовательности
+    :param iterable: входная последовательности
     :param function: функция фильтрации
     :return: новая отфильтрованная последовательность
-    """
-    pass
+"""
 
 
 print(my_filter([1, 2, 3, 4, 5], lambda x: x > 3) == [4, 5])  # True
 print(my_filter([1, 2, 3, 4, 5], lambda x: x == 2) == [2])  # True
 print(my_filter([1, 2, 3, 4, 5], lambda x: x != 3) == [1, 2, 4, 5])  # True
 print(my_filter(['a', 'b', 'c', 'd'], lambda x: x in 'abba') == ['a', 'b'])  # True
+

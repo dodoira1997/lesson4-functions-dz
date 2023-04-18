@@ -33,7 +33,8 @@
 
 Для реализации основного меню можно использовать пример ниже или написать свой
 """
-
+chet = 0
+spisok_pok=[]
 while True:
     print('1. пополнение счета')
     print('2. покупка')
@@ -42,11 +43,20 @@ while True:
 
     choice = input('Выберите пункт меню')
     if choice == '1':
-        pass
+        pop = int(input('На какую сумму хотите пополнить счет'))
+        chet += pop
     elif choice == '2':
-        pass
+        pok = int(input('Введите сумму покупки'))
+        if pok > chet:
+            print('недостаточно средств')
+        else:
+            pok < chet
+            kakie = str(input('Название покупки'))
+            chet -= pok
+            spisok_pok.append(kakie)
     elif choice == '3':
-        pass
+        print('Список покупок:',spisok_pok)
+        print(chet)
     elif choice == '4':
         break
     else:
